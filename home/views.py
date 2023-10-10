@@ -60,7 +60,7 @@ def search_results(request):
         }
         return render(request,'search_results.html',context)
 
-@login_required
+# @login_required
 def details(request,uid):
     hotels=Hotel.objects.get(uid=uid)
     room_type = Room_Type.objects.filter(room__hotel=hotels).distinct()
