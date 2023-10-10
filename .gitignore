@@ -17,5 +17,6 @@ secret_key.txt
 *.pyc
 *.pyo
 *.env
+*.json
 .DS_Store
 *.bashrc
