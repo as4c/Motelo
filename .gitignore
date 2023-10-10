@@ -12,6 +12,7 @@ public/
 
 # Ignore secret key file
 secret_key.txt
+db.sqlite3
 
 # Ignore configuration files for development environment
 *.pyc
