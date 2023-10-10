@@ -14,6 +14,8 @@ public/
 # Ignore configuration files for development environment
 *.pyc
 *.pyo
-.env
+*.env
 .DS_Store
 .bashrc
+*.sqlite3
+*.json
