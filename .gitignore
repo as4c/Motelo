@@ -2,7 +2,7 @@
 *.db
 *.sqlite3
 *.json
-
+*.env
 # Ignore media files
 media/
 public/
@@ -14,8 +14,5 @@ public/
 # Ignore configuration files for development environment
 *.pyc
 *.pyo
-*.env
 .DS_Store
 .bashrc
-*.sqlite3
-*.json
