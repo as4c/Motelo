@@ -70,7 +70,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect("signin")
+    return redirect("/")
 
 @login_required
 def change_password(request):
