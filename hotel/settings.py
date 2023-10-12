@@ -2,7 +2,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-
+from decouple import config
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'hotel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'HotelDb',
-        'USER': 'admin',
-        'PASSWORD': 'Asagar&8676',
-        'HOST': 'hotel-database.cgw14feyvao3.ap-south-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USERNAME'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
@@ -133,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -157,8 +157,8 @@ from hotel.aws.conf import *
 
 
 
-STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
 
 # if DEBUG:
@@ -174,11 +174,11 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 
 
-BACKEND_DOMAIN=os.getenv('BACKEND_DOMAIN')
-PAYMENT_SUCCESS_URL=os.getenv('PAYMENT_SUCCESS_URL')
-PAYMENT_CANCEL_URL=os.getenv('PAYMENT_CANCEL_URL')
+BACKEND_DOMAIN=config('BACKEND_DOMAIN')
+PAYMENT_SUCCESS_URL=config('PAYMENT_SUCCESS_URL')
+PAYMENT_CANCEL_URL=config('PAYMENT_CANCEL_URL')
 
-STRIPE_WEBHOOK_SECRET=os.getenv('STRIPE_WEBHOOK_SECRET')
+STRIPE_WEBHOOK_SECRET=config('STRIPE_WEBHOOK_SECRET')
 
 USE_DJANGO_JQUERY = True
 JQUERY_URL = False
