@@ -588,3 +588,19 @@
     font-size: 1em;
   }
   /* "background-image: linear-gradient(to right top, #300537, #5e0049, #8f0051, #c0004f, #eb1242);" */
+
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+   }
+   
+   .gallery img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+   }

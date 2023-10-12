@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login,logout
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import (Amenities, Hotel, HotelBooking,Room_Type,Room)
+from .models import (Amenities, Hotel, HotelBooking,Room_Type,Room, HotelImages)
 from django.db.models import Q
 from django.conf import settings
 import stripe
@@ -65,12 +65,15 @@ def details(request,uid):
     hotels=Hotel.objects.get(uid=uid)
     room_type = Room_Type.objects.filter(room__hotel=hotels).distinct()
     room=Room.objects.filter(hotel=hotels)
+    hotel_image = HotelImages(hotel = hotels)
     form = HotelBookingForm()
+
     context={
         'hotels':hotels,
         'room_type':room_type,
         'room':room,
         'form':form,
+        'images':hotel_image
     }
     return render(request,'details.html',context)
 
@@ -102,6 +105,9 @@ def room_availability(request):
         messages.success(request,"Congrats,Hotel is available in these dates! Book Now")
         return JsonResponse({"available": available,"message":"Congrats,Room is available! Book Now"})
     return JsonResponse({"error": "Invalid request method"})
+
+
+
 @login_required
 def book_hotel(request):
     if request.method == 'POST':
@@ -208,36 +214,3 @@ def ContactUs(request):
     return render(request,'contact_us.html')
 
 ''' New Codes End '''
-
-def home(request):
-    amenities_objs = Amenities.objects.all()
-    hotels_objs = Hotel.objects.all()
-
-    sort_by = request.GET.get('sort_by')
-    search = request.GET.get('search')
-    amenities = request.GET.getlist('amenities')
-    if sort_by:
-        if sort_by == 'ASC':
-            hotels_objs = hotels_objs.order_by('hotel_price')
-        elif sort_by == 'DSC':
-            hotels_objs = hotels_objs.order_by('-hotel_price')
-
-    if search:
-        hotels_objs = hotels_objs.filter(
-            Q(hotel_name__icontains = search) |
-            Q(description__icontains = search) )
-
-
-    if len(amenities):
-        hotels_objs = hotels_objs.filter(amenities__amenity_name__in = amenities).distinct()
-
-    context = {
-        'amenities_objs' : amenities_objs , 
-        'hotels_objs' : hotels_objs , 
-        'sort_by' : sort_by ,
-        'search' : search , 
-        'amenities' : amenities
-    }
-
-    # return render(request , 'home.html' ,context)
-

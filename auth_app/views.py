@@ -41,21 +41,26 @@ def signup(request):
             username = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             user = authenticate(request, username=username, password=password)
-            login(request, user)
-            return redirect('home:home')
+            print(user)
+            if user is not None:
+                login(request, user)
+                return redirect("/")
+            else:
+                return render(request, "signup.html", {"error": "Invalid email or password."})
     else:
         form = UserRegistrationForm()
     return render(request, 'signup.html', {'form': form})
 
-@require_http_methods(["GET", "POST"])
+# @require_http_methods(["GET", "POST"])
 def user_login(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
         user = authenticate(request, username=email, password=password)
+        print(user)
         if user is not None:
             login(request, user)
-            return redirect("home:home")
+            return redirect("/")
         else:
             return render(request, "signin.html", {"error": "Invalid email or password."})
     else:

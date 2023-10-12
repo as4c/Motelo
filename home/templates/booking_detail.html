@@ -44,7 +44,7 @@
             {% for image in booking.hotel.images.all|slice:":4" %}
             <div class="col-6">
                 <div class="gallery_img">
-                    <figure><img src="/media/{{image.images}}" alt="#" /></figure>
+                    <figure><img src="{{image.images.url}}" alt="#" /></figure>
                 </div>
             </div>
 

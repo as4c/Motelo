@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 #Third Party Apps
     'smart_selects',
     'cities_light',
+    'storages'
     
 
 ]
@@ -80,19 +81,21 @@ WSGI_APPLICATION = 'hotel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'hotel_db',
-    #     'USER': 'railway',
-    #     'PASSWORD': '',
-    #     'HOST': 'mysql',
-    #     'PORT': '3306',
-    # }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'HotelDb',
+        'USER': 'admin',
+        'PASSWORD': 'Asagar&8676',
+        'HOST': 'hotel-database.cgw14feyvao3.ap-south-1.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
 }
-
+# 'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -137,25 +140,30 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+from hotel.aws.conf import *
 
-# STATIC_ROOT = 'staticfiles'
+# if not DEBUG:
+#     from hotel.aws.conf import *
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles','static')
+# else:
+#     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
-# STATICFILES_DIR = {
-#     os.path.join(BASE_DIR , "static")
-# }
+#     STATICFILES_DIRS = [BASE_DIR / "public" / "static"]
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 
-MEDIA_URL = '/media/'
+#     MEDIA_ROOT =  os.path.join(BASE_DIR, 'public','static') 
 
-
+#     MEDIA_URL = '/media/'
 
 
-if DEBUG:
-    STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
-    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
+# if DEBUG:
+#     STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+#     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 
 # Uncomment these lines if you have a live keys

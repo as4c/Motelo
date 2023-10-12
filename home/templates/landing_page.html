@@ -2,97 +2,12 @@
 {% load static %}
 {% block content %}
 
-<script src="../static/js/main.js"></script>
-<script src="../static/detail/js/main.js"></script>
+<script src="{% static 'js/main.js' %}""></script>
+<script src="{% static 'detail/js/main.js' %}"></script>
 <!-- Page Preloder -->
-<header class="header bg-white">
-    <div class="header__top ">
-        <div class="container-fluid">
-            <div class="row">
 
-                <div class="col-lg-5">
-                    <div class="  header__top__right">
-                       
-                        <div class="header__top__language mx-3">
-                            <span style="font-size: larger;">Asia</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                        <div class="header__top__language mx-3">
-                            <span style="font-size: larger;">Europe</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                        <div class="header__top__language mx-3">
-                            <span style="font-size: larger;">North America</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                        <div class="header__top__language m-3">
-                            <span style="font-size: larger;">South America</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                        <div class="header__top__language m-3">
-                            <span style="font-size: larger;">Africa</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                        <div class="header__top__language m-3">
-                            <span style="font-size: larger;">Oceania</span>
-
-                            <ul>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                                <li>Hotel 1</li>
-                                <li>Hotel 2</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 <!-- Hero Section Begin -->
-<section class="hero spad set-bg" data-setbg="../static/images/hero.jpg" style="background-image:url('../static/images/hero.jpg')">
+<section class="hero spad set-bg" data-setbg="{% static 'images/hero.jpg' %}" >
     <!-- style="background-image:url('../static/images/hero.jpg')" -->
     <div class="container">
         <div class="row">
@@ -151,7 +66,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="testimonial__pic">
-                    <img src="../static/images/testimonial-left.jpg" alt="">
+                    <img src="{% static 'images/testimonial-left.jpg' %}" alt="">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -206,7 +121,7 @@
 <!-- Testimonial Section End -->
 
 <!-- Chooseus Section Begin -->
-<div class="chooseus spad set-bg" data-setbg="../static/images/chooseus-bg.jpg">
+<div class="chooseus spad set-bg" data-setbg="{% static 'images/chooseus-bg.jpg' %}">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 text-center">

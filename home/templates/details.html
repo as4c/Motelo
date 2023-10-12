@@ -1,6 +1,8 @@
 {% extends 'base2.html' %}
 {% block content %}
 {% load static %}
+
+<title>{{hotels.hotel_name}}-Details</title>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/ajax.js' %}"></script>
 {% include "messages.html" %}
@@ -49,8 +51,10 @@
                     {% for image in hotels.images.all|slice:":4" %}
 
                     <div class="col-6 text-end">
+                        
                         <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"
-                            src="/media/{{image.images}}" style="margin-top: 25%;">
+                            src="{{ image.images.url }}" style="margin-top: 25%;">
+                            
                     </div>
                     {% endfor %}
                 </div>
@@ -247,6 +251,7 @@
             <h1 class="mb-5">Explore Our <span class="text-warning text-uppercase">Services</span></h1>
         </div>
         <div class="row g-4">
+            {% for amenitee in hotels.hotel_amenities.all %}
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <a class="service-item rounded" href="">
                     <div class="service-icon bg-transparent border rounded p-1">
@@ -254,71 +259,13 @@
                             <i class="fa fa-hotel fa-2x text-primary"></i>
                         </div>
                     </div>
-                    <h5 class="mb-3">Rooms & Appartment</h5>
+                   
+                    <h5 class="mb-3">{{ amenitee.amenity_name }}</h5>
                     <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
                         diam stet diam sed stet lorem.</p>
                 </a>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <a class="service-item rounded" href="">
-                    <div class="service-icon bg-transparent border rounded p-1">
-                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                            <i class="fa fa-utensils fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">Food & Restaurant</h5>
-                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                        diam stet diam sed stet lorem.</p>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="service-item rounded" href="">
-                    <div class="service-icon bg-transparent border rounded p-1">
-                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                            <i class="fa fa-spa fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">Spa & Fitness</h5>
-                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                        diam stet diam sed stet lorem.</p>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <a class="service-item rounded" href="">
-                    <div class="service-icon bg-transparent border rounded p-1">
-                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                            <i class="fa fa-swimmer fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">Sports & Gaming</h5>
-                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                        diam stet diam sed stet lorem.</p>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a class="service-item rounded" href="">
-                    <div class="service-icon bg-transparent border rounded p-1">
-                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                            <i class="fa fa-glass-cheers fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">Event & Party</h5>
-                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                        diam stet diam sed stet lorem.</p>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                <a class="service-item rounded" href="">
-                    <div class="service-icon bg-transparent border rounded p-1">
-                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                            <i class="fa fa-dumbbell fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">GYM & Yoga</h5>
-                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                        diam stet diam sed stet lorem.</p>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -332,7 +279,7 @@
             {% for image in hotels.images.all|slice:":12" %}
             <div class="col-md-3 col-sm-6">
                 <div class="gallery_img">
-                    <figure><img src="/media/{{image.images}}" alt="#" /></figure>
+                    <figure><img src="{{image.images.url}}" alt="#" /></figure>
                 </div>
             </div>
 
@@ -346,7 +293,7 @@
 
 
 <!-- Testimonial Start -->
-<div class="container-xxl testimonial my-5 py-5 wow zoomIn" data-wow-delay="0.1s">
+<!-- <div class="testimonial my-5 py-5 wow zoomIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="owl-carousel testimonial-carousel py-5">
             <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
@@ -390,7 +337,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Testimonial End -->
 
 
@@ -425,11 +372,11 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    if (typeof jQuery == 'undefined') {
-        console.log('jQuery is not loaded');
-    } else {
-        console.log('jQuery is loaded');
-    }
+    // if (typeof jQuery == 'undefined') {
+    //     console.log('jQuery is not loaded');
+    // } else {
+    //     console.log('jQuery is loaded');
+    // }
 </script>
 
 <script>
@@ -437,9 +384,9 @@
     $(document).ready(function () {
         // Add click event listener to "Check Availability" button
         $(".check-availability-btn").click(function (e) {
-            console.log("check availability")
+            // console.log("check availability")
             e.preventDefault();
-            // Get the hotel, start date, end date, and room count values from the form (replace "..." with your code)
+           
             var pathname = window.location.pathname;
             var parts = pathname.split('/');
             var uid = parts[2];
@@ -497,13 +444,13 @@
         });
         
         $("#book-now").click(function (e) {
-            console.log("Book Now")
+            // console.log("Book Now")
             e.preventDefault();
             // Get the hotel, start date, end date, and room count values from the form (replace "..." with your code)
             var pathname = window.location.pathname;
-            console.log(pathname)
+            // console.log(pathname)
             var parts = pathname.split('/');
-            console.log(parts[1])
+            // console.log(parts[1])
             var uid = parts[2];
             var hotelId = uid
             var startDate = $('#check-in').val();
