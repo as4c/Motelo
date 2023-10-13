@@ -92,10 +92,6 @@ DATABASES = {
         },
     }
 }
-# 'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     },
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,30 +136,28 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-from hotel.aws.conf import *
-
-# if not DEBUG:
-#     from hotel.aws.conf import *
-
-# else:
-#     STATIC_ROOT = os.path.join(BASE_DIR,'static')
-
-#     STATICFILES_DIRS = [BASE_DIR / "public" / "static"]
-
-#     MEDIA_ROOT =  os.path.join(BASE_DIR, 'public','static') 
-
-#     MEDIA_URL = '/media/'
 
 
+if not DEBUG:
+    from hotel.aws.conf import *
+
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+    STATICFILES_DIRS = [BASE_DIR / "public" / "static"]
+
+    MEDIA_ROOT =  os.path.join(BASE_DIR, 'public','static') 
+
+    MEDIA_URL = '/media/'
 
 
-STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
 
-# if DEBUG:
-#     STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
-#     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
+if DEBUG:
+    STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 
 # Uncomment these lines if you have a live keys
