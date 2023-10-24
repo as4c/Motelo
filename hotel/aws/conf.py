@@ -4,11 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# AWS_ACCESS_KEY = "AKIAUZ4JTR5SYPI37WBF"
 
-# AWS_SECRETE_KEY = "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"
-
-# AWS_STORAGE_BUCKET_NAME = 'hotelubcket'
 
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
 
