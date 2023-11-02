@@ -1,6 +1,4 @@
-# Motelo - Hotel Booking Django App
-
-![Home Page](screenshot/home-page.png)
+# Motelo - Hotel Booking App
 
 This is a Django web application for hotel booking. It provides users with the ability to book hotels, check hotel availability, manage check-in and checkout, view hotel details, write reviews, and process online payments using the Stripe API.
 
