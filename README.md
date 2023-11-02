@@ -14,6 +14,34 @@ This is a Django web application for hotel booking. It provides users with the a
 - **Write Hotel Rating Reviews** : Users can write and submit reviews/ratings for hotels they have stayed in.
 - **Online Booking with Stripe** : Integrated Stripe payment API for secure online payment processing.
 
+## Screenshots  
+
+**HomePage** 
+![home-page](https://github.com/as4c/Motelo/assets/84590258/5a674010-2ca3-4aff-89a8-0671b6a271b3)
+
+**Search result page**
+![search-result](https://github.com/as4c/Motelo/assets/84590258/60badfd4-b72a-4cf2-88aa-e191238e26d0)
+
+**Hotel Detail Page**
+![hotel-detail](https://github.com/as4c/Motelo/assets/84590258/ea5937ff-4757-425f-abb0-2f0ea0ee332a)
+
+**Hotel Services Page**
+![services](https://github.com/as4c/Motelo/assets/84590258/bd404d36-8aa3-42cd-9b18-17acb913cf52)
+
+
+**Hotel available page**
+![available](https://github.com/as4c/Motelo/assets/84590258/78bd4a27-02ba-43b5-a6d7-3a11f73a9062)
+
+**Booking Form**
+![booking-form](https://github.com/as4c/Motelo/assets/84590258/fd295a4d-95d2-4743-a58e-5316adf2d126)
+
+**Payment page**
+![payment-page](https://github.com/as4c/Motelo/assets/84590258/efa9ee6e-5648-442d-948f-cf8c767e830f)
+
+**Payment Successfull page**
+![payment-successfull](https://github.com/as4c/Motelo/assets/84590258/0b2fa7c4-c48c-4c57-a48b-669c4d285d06)
+
+
 ## Installation
 
 1. Clone the repository:
